@@ -67,105 +67,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
         <p style={{
           color: "rgba(220,220,240,0.85)",
           fontSize: "clamp(14px, 2.5vw, 18px)",
-          maxWidth: "480px", lineHeight: 1.7,
+          maxWidth: "480px", 
+          lineHeight: 1.7,
           textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+          textAlign: "center",
+          marginBottom: "20px",
         }}>
           Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about Grand Line, his crew, or his dream!
-            marginBottom: "8px",
-            fontSize: "14px",
-            fontWeight: "600",
-            color: "#f5a623"
-          }}>
-            We're gonna find One Piece!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            First, there's **Zoro**! He's super strong, a swordsman! He sleeps a lot, but he's always there for me! And he gets lost! HAHAHA!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            Then **Nami**! She's our navigator! She can draw maps of the whole world! And she hits me when I do something silly! But she's the best!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Usopp**! He's our sniper! He's got a big nose! And he tells big stories! But he's a brave warrior of the sea!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Sanji**! He's our cook! He makes the BEST FOOD! I love his meat! MEAT! He's always fighting Zoro, but his food is amazing!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Chopper**! He's our doctor! He's a reindeer, but he's a man too! He can turn into different forms! He's so cute! And he can heal anything!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Robin**! She's our archaeologist! She knows everything about history! And she can make a thousand arms! SO COOL!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Franky**! He's our shipwright! He made our ship, Thousand Sunny! He's SUPER! And he drinks cola! SUUUUPER!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            **Brook**! He's our musician! A skeleton! He plays violin! And he asks to see ladies' panties! YO HO HO HO!
-          </span>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "4px",
-            fontSize: "13px",
-            color: "rgba(200,200,220,0.8)"
-          }}>
-            And **Jinbe**! He's our helmsman! A fish-man! He's super strong and can fight in the water! He's a big brother!
-          </span>
-          <span style={{ 
-            display: "block", 
-            fontSize: "14px",
-            fontWeight: "600",
-            color: "#f5a623"
-          }}>
-            They're all my nakama! We're gonna have SO MANY ADVENTURES!
-          </span>
-          <span style={{ 
-            display: "block", 
-            fontSize: "16px",
-            fontWeight: "700",
-            color: "#ff6b35"
-          }}>
-            And I'm gonna be King of the Pirates!! Let's GOOOOOO!! GOMU GOMU NO!!
-          </span>
         </p>
 
         <button className="scroll-btn" onClick={scrollToChat} style={{
