@@ -58,6 +58,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
   searchMessages,
   bottomRef,
 }) => {
+  // Force Vercel deployment - v3
   // Function to format message content with paragraph styling and highlighting
   const formatMessageContent = (content: string, isUser: boolean = false) => {
     // First, remove any markdown formatting
