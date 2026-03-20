@@ -58,6 +58,61 @@ const ChatSection: React.FC<ChatSectionProps> = ({
   searchMessages,
   bottomRef,
 }) => {
+  // Function to format message content with paragraph styling and highlighting
+  const formatMessageContent = (content: string, isUser: boolean = false) => {
+    // Split content into paragraphs
+    const paragraphs = content.split('\n').filter(p => p.trim());
+    
+    // Keywords to highlight
+    const highlightKeywords = [
+      'MEAT', 'ADVENTURE', 'NAKAMA', 'ONE PIECE', 'KING OF THE PIRATES',
+      'STRONGEST', 'CREW', 'DREAM', 'GRAND LINE', 'DEVIL FRUIT',
+      'HAKI', 'PONEGLYPH', 'YONKO', 'WANO', 'RALEIGH', 'ZORO', 'NAMI', 
+      'USOPP', 'SANJI', 'CHOPPER', 'ROBIN', 'FRANKY', 'BROOK', 'JINBE'
+    ];
+
+    return paragraphs.map((paragraph, index) => {
+      let formattedText = paragraph;
+      
+      // Highlight important keywords
+      highlightKeywords.forEach(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+        formattedText = formattedText.replace(regex, 
+          `<span style="color: #f5a623; font-weight: 600; text-shadow: 0 0 8px rgba(245,166,35,0.3);">${keyword}</span>`
+        );
+      });
+
+      // Highlight Luffy's signature phrases
+      const luffyPhrases = [
+        'I\'m gonna be King of the Pirates!',
+        'Shishishi!',
+        'Meat!',
+        'Let\'s go!',
+        'Gomu Gomu no',
+        'I\'m Luffy!',
+        'Future King of the Pirates'
+      ];
+
+      luffyPhrases.forEach(phrase => {
+        const regex = new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        formattedText = formattedText.replace(regex, 
+          `<span style="color: #ff6b35; font-weight: 700; font-style: italic; text-shadow: 0 0 10px rgba(255,107,53,0.4);">${phrase}</span>`
+        );
+      });
+
+      return (
+        <p key={index} style={{
+          margin: index === 0 ? '0 0 12px 0' : '0 0 12px 0',
+          lineHeight: '1.6',
+          fontSize: '14px',
+          color: isUser ? 'rgba(255,255,255,0.95)' : 'rgba(220,220,240,0.95)',
+          textAlign: 'left',
+        }}>
+          <span dangerouslySetInnerHTML={{ __html: formattedText }} />
+        </p>
+      );
+    });
+  };
   return (
     <section style={{
       minHeight: "100vh",
