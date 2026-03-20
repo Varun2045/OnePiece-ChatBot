@@ -7,6 +7,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
+  // Force cache refresh - v2
   return (
     <section style={{
       position: "relative",
@@ -73,7 +74,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
           textAlign: "center",
           marginBottom: "20px",
         }}>
-          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about the Grand Line, his crew, or his dream!
+          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about the Grand Line, his Straw Hat crew, or his dream to find One Piece!
         </p>
 
         <button className="scroll-btn" onClick={scrollToChat} style={{
