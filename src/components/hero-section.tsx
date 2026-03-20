@@ -24,22 +24,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
         animation: "shipRock 7s ease-in-out infinite",
         transformOrigin: "center 80%",
       }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <Image 
+          src="/12.png" 
+          alt="Going Merry" 
+          width={1440}
+          height={810}
           style={{
             width: "100%", height: "100%",
             objectFit: "cover",
             objectPosition: "center 55%",
             display: "block",
             filter: "brightness(0.65) saturate(1.3)",
-          }}
-        >
-          <source src="/bg.mp4" type="video/mp4" />
-          Fallback to image for browsers that don't support video
-        </video>
+          }} 
+        />
       </div>
 
       <div style={{
