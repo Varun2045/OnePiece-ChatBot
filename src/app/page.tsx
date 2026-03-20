@@ -12,6 +12,7 @@ import { globalStyles } from "@/lib/styles";
 import { Message } from "@/types/message";
 
 export default function Home() {
+  // Fixed TypeScript error - added missing setShowSearch prop
   const {
     messages,
     input,
