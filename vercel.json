@@ -41,7 +41,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(mp4|webm|ogg|mp3|wav|flac|aac))",
+      "source": "/(.*\\.(mp4|webm|ogg|mp3|wav|flac|aac))$",
       "headers": [
         {
           "key": "Cache-Control",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "source": "/(.*\\.(jpg|jpeg|png|gif|webp|avif|svg))",
+      "source": "/(.*\\.(jpg|jpeg|png|gif|webp|avif|svg))$",
       "headers": [
         {
           "key": "Cache-Control",
