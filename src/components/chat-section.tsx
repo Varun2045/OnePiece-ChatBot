@@ -60,15 +60,20 @@ const ChatSection: React.FC<ChatSectionProps> = ({
 }) => {
   // Function to format message content with paragraph styling and highlighting
   const formatMessageContent = (content: string, isUser: boolean = false) => {
+    // First, remove any markdown formatting
+    let cleanContent = content.replace(/\*\*/g, '');
+    
     // Split content into paragraphs
-    const paragraphs = content.split('\n').filter(p => p.trim());
+    const paragraphs = cleanContent.split('\n').filter(p => p.trim());
     
     // Keywords to highlight
     const highlightKeywords = [
       'MEAT', 'ADVENTURE', 'NAKAMA', 'ONE PIECE', 'KING OF THE PIRATES',
       'STRONGEST', 'CREW', 'DREAM', 'GRAND LINE', 'DEVIL FRUIT',
       'HAKI', 'PONEGLYPH', 'YONKO', 'WANO', 'RALEIGH', 'ZORO', 'NAMI', 
-      'USOPP', 'SANJI', 'CHOPPER', 'ROBIN', 'FRANKY', 'BROOK', 'JINBE'
+      'USOPP', 'SANJI', 'CHOPPER', 'ROBIN', 'FRANKY', 'BROOK', 'JINBE',
+      'YOSH', 'GOMU GOMU NO', 'SUPER', 'SUNNY', 'Ore wa', 'kaizoku ou',
+      'otoko da', 'nakama', 'warrior of the sea', 'fish-man karate'
     ];
 
     return paragraphs.map((paragraph, index) => {
@@ -90,7 +95,14 @@ const ChatSection: React.FC<ChatSectionProps> = ({
         'Let\'s go!',
         'Gomu Gomu no',
         'I\'m Luffy!',
-        'Future King of the Pirates'
+        'Future King of the Pirates',
+        'Ore wa Monkey D. Luffy',
+        'kaizoku ou ni naru otoko da',
+        'They\'re the best nakama',
+        'brave warrior of the sea',
+        'runs on cola',
+        'He\'s a SUPER',
+        'He can run on water'
       ];
 
       luffyPhrases.forEach(phrase => {
@@ -99,6 +111,11 @@ const ChatSection: React.FC<ChatSectionProps> = ({
           `<span style="color: #ff6b35; font-weight: 700; font-style: italic; text-shadow: 0 0 10px rgba(255,107,53,0.4);">${phrase}</span>`
         );
       });
+
+      // Highlight exclamations and emphasis
+      formattedText = formattedText.replace(/([A-Z]{2,}!*)/g, 
+        '<span style="color: #ff6b35; font-weight: 700; text-shadow: 0 0 8px rgba(255,107,53,0.3);">$1</span>'
+      );
 
       return (
         <p key={index} style={{
