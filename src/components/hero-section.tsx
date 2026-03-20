@@ -64,29 +64,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
           lineHeight: 1.1,
         }}>Talk to Luffy</h1>
 
-        <div style={{
+        <p style={{
           color: "rgba(220,220,240,0.85)",
           fontSize: "clamp(14px, 2.5vw, 18px)",
-          maxWidth: "500px", 
-          lineHeight: 1.8,
+          maxWidth: "480px", 
+          lineHeight: 1.7,
           textShadow: "0 2px 10px rgba(0,0,0,0.8)",
           textAlign: "center",
           marginBottom: "20px",
-          padding: "20px",
-          background: "rgba(255,255,255,0.03)",
-          borderRadius: "12px",
-          border: "1px solid rgba(255,255,255,0.1)",
         }}>
-          <p style={{ margin: "0 0 12px 0", fontSize: "16px", fontWeight: "600", color: "#f5a623" }}>
-            Meet Monkey D. Luffy
-          </p>
-          <p style={{ margin: "0 0 12px 0", fontSize: "15px", fontWeight: "500", color: "rgba(255,255,255,0.9)" }}>
-            Future King of the Pirates
-          </p>
-          <p style={{ margin: "0", fontSize: "14px", lineHeight: "1.6" }}>
-            Chat with the captain of the Straw Hat Pirates. Ask him about his adventures across the Grand Line, his amazing crew members, and his dream to find the legendary One Piece treasure.
-          </p>
-        </div>
+          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about the Grand Line, his crew, or his dream!
+        </p>
 
         <button className="scroll-btn" onClick={scrollToChat} style={{
           marginTop: "60px",
