@@ -65,7 +65,9 @@ export default function Home() {
     const timer = setTimeout(() => {
       setShowLoader(false);
       trackEvent('loader_complete', 'UI');
-    }, 3200);
+      // Scroll to top after loader completes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2500); // Reduced from 3200ms to 2500ms
     return () => clearTimeout(timer);
   }, []);
 
