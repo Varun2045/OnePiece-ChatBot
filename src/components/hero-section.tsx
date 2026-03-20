@@ -73,7 +73,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
           textAlign: "center",
           marginBottom: "20px",
         }}>
-          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about Grand Line, his crew, or his dream!
+          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about the Grand Line, his crew, or his dream!
         </p>
 
         <button className="scroll-btn" onClick={scrollToChat} style={{
