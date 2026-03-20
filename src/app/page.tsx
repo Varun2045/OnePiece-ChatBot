@@ -1,65 +1,118 @@
-import Image from "next/image";
+"use client";
+import React, { useState, useEffect } from "react";
+import ErrorBoundary from "@/components/error-boundary";
+import BountyPosterLoader from "@/components/bounty-poster-loader";
+import HeroSection from "@/components/hero-section";
+import ChatSection from "@/components/chat-section";
+import { useChat } from "@/hooks/use-chat";
+import { useSparkleEffect, useKeyboardShortcuts, useOnlineStatus, useScrollToBottom, usePageLoad } from "@/hooks/use-effects";
+import { trackEvent } from "@/lib/analytics";
+import { STARTERS } from "@/lib/constants";
+import { globalStyles } from "@/lib/styles";
+import { Message } from "@/types/message";
 
 export default function Home() {
+  const {
+    messages,
+    input,
+    setInput,
+    loading,
+    error,
+    isTyping,
+    sendMessage,
+    clearMessages,
+    searchQuery,
+    setSearchQuery,
+    showSearch,
+    setShowSearch,
+    editingMessageId,
+    editText,
+    setEditText,
+    startEditingMessage,
+    saveEditedMessage,
+    cancelEditing,
+    deleteMessage,
+    deletedMessage,
+    showUndo,
+    undoDelete,
+    searchMessages,
+  } = useChat();
+
+  const [showLoader, setShowLoader] = useState(true);
+  const [isOnline, setIsOnline] = useState(true);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [showAccessibilityMenu, setShowAccessibilityMenu] = useState(false);
+  const [reacting, setReacting] = useState(false);
+
+  const bottomRef = useScrollToBottom(messages, loading);
+  const chatRef = React.useRef<HTMLDivElement>(null);
+
+  // Set online status after hydration
+  useEffect(() => {
+    setIsOnline(navigator.onLine);
+  }, []);
+
+  usePageLoad();
+  useSparkleEffect();
+  useOnlineStatus(setIsOnline);
+  useKeyboardShortcuts(showSearch, setShowSearch, showAccessibilityMenu, setShowAccessibilityMenu, editingMessageId, (id: string | null) => {
+    if (id) startEditingMessage(id, "");
+    else cancelEditing();
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+      trackEvent('loader_complete', 'UI');
+    }, 3200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const scrollToChat = () => {
+    chatRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+    <ErrorBoundary>
+      <main style={{ fontFamily: "'Segoe UI', sans-serif", background: "#000" }}>
+        <style>{globalStyles}</style>
+
+        {/* ── BOUNTY POSTER LOADER ── */}
+        <BountyPosterLoader showLoader={showLoader} />
+
+        {/* ── HERO SECTION ── */}
+        <HeroSection scrollToChat={scrollToChat} />
+
+        {/* ── CHAT SECTION ── */}
+        <div ref={chatRef}>
+          <ChatSection
+            messages={messages}
+            loading={loading}
+            error={error}
+            isTyping={isTyping}
+            input={input}
+            setInput={setInput}
+            sendMessage={sendMessage}
+            showSearch={showSearch}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            editingMessageId={editingMessageId}
+            editText={editText}
+            setEditText={setEditText}
+            saveEditedMessage={saveEditedMessage}
+            cancelEditing={cancelEditing}
+            deleteMessage={deleteMessage}
+            showUndo={showUndo}
+            undoDelete={undoDelete}
+            clearMessages={clearMessages}
+            selectedLanguage={selectedLanguage}
+            setSelectedLanguage={setSelectedLanguage}
+            isOnline={isOnline}
+            searchMessages={searchMessages}
+            bottomRef={bottomRef}
+          />
         </div>
       </main>
-    </div>
+    </ErrorBoundary>
   );
 }
