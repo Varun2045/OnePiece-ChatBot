@@ -49,8 +49,8 @@ const ChatSection: React.FC<ChatSectionProps> = ({
   saveEditedMessage,
   cancelEditing,
   deleteMessage,
-  showUndo,
-  undoDelete,
+  // showUndo,
+  // undoDelete,
   clearMessages,
   selectedLanguage,
   setSelectedLanguage,
@@ -62,7 +62,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
   // Function to format message content with paragraph styling and highlighting
   const formatMessageContent = (content: string, isUser: boolean = false) => {
     // First, remove any markdown formatting
-    let cleanContent = content.replace(/\*\*/g, '');
+    const cleanContent = content.replace(/\*\*/g, '');
     
     // Split content into paragraphs
     const paragraphs = cleanContent.split('\n').filter(p => p.trim());
