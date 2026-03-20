@@ -73,7 +73,9 @@ const ChatSection: React.FC<ChatSectionProps> = ({
       'HAKI', 'PONEGLYPH', 'YONKO', 'WANO', 'RALEIGH', 'ZORO', 'NAMI', 
       'USOPP', 'SANJI', 'CHOPPER', 'ROBIN', 'FRANKY', 'BROOK', 'JINBE',
       'YOSH', 'GOMU GOMU NO', 'SUPER', 'SUNNY', 'Ore wa', 'kaizoku ou',
-      'otoko da', 'nakama', 'warrior of the sea', 'fish-man karate'
+      'otoko da', 'nakama', 'warrior of the sea', 'fish-man karate',
+      'first mate', 'navigator', 'sniper', 'cook', 'doctor', 'archaeologist',
+      'shipwright', 'musician', 'helmsman'
     ];
 
     return paragraphs.map((paragraph, index) => {
@@ -102,7 +104,14 @@ const ChatSection: React.FC<ChatSectionProps> = ({
         'brave warrior of the sea',
         'runs on cola',
         'He\'s a SUPER',
-        'He can run on water'
+        'He can run on water',
+        'three swords',
+        'gets lost',
+        'weather and maps',
+        'cool inventions',
+        'different forms',
+        'make hands pop up',
+        'steer the ship'
       ];
 
       luffyPhrases.forEach(phrase => {
@@ -114,6 +123,11 @@ const ChatSection: React.FC<ChatSectionProps> = ({
 
       // Highlight exclamations and emphasis
       formattedText = formattedText.replace(/([A-Z]{2,}!*)/g, 
+        '<span style="color: #ff6b35; font-weight: 700; text-shadow: 0 0 8px rgba(255,107,53,0.3);">$1</span>'
+      );
+
+      // Highlight words in all caps with exclamation
+      formattedText = formattedText.replace(/(\w+!{2,})/g, 
         '<span style="color: #ff6b35; font-weight: 700; text-shadow: 0 0 8px rgba(255,107,53,0.3);">$1</span>'
       );
 
