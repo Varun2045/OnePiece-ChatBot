@@ -94,6 +94,7 @@ export default function Home() {
             setInput={setInput}
             sendMessage={sendMessage}
             showSearch={showSearch}
+            setShowSearch={setShowSearch}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             editingMessageId={editingMessageId}
