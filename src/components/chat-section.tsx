@@ -8,29 +8,26 @@ import { STARTERS } from "@/lib/constants";
 
 interface ChatSectionProps {
   messages: Message[];
-  loading: boolean;
-  error: string;
-  isTyping: boolean;
   input: string;
   setInput: (value: string) => void;
-  sendMessage: (text: string) => Promise<void>;
-  showSearch: boolean;
-  searchQuery: string;
-  setSearchQuery: (value: string) => void;
-  setShowSearch: (value: boolean) => void;
-  editingMessageId: string | null;
-  editText: string;
-  setEditText: (value: string) => void;
-  saveEditedMessage: (messageId: string) => void;
-  cancelEditing: () => void;
-  deleteMessage: (messageId: string, index: number) => void;
-  showUndo: boolean;
-  undoDelete: () => void;
-  clearMessages: () => void;
+  onSubmit: (e: React.FormEvent) => void;
+  isTyping: boolean;
+  isOnline: boolean;
   selectedLanguage: string;
   setSelectedLanguage: (value: string) => void;
-  isOnline: boolean;
-  searchMessages: () => Message[];
+  showSearch: boolean;
+  setShowSearch: (value: boolean) => void;
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  isEditing: boolean;
+  editingMessageId: string | null;
+  editingContent: string;
+  setEditingContent: (value: string) => void;
+  startEditingMessage: (id: string, content: string) => void;
+  cancelEditing: () => void;
+  saveEdit: () => void;
+  deleteMessage: (id: string, index: number) => void;
+  clearMessages: () => void;
   bottomRef: React.RefObject<HTMLDivElement>;
 }
 
@@ -414,7 +411,9 @@ const ChatSection: React.FC<ChatSectionProps> = ({
                         </button>
                       </div>
                     ) : (
-                      msg.content
+                      <div style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                        {formatMessageContent(msg.content, msg.role === 'user')}
+                      </div>
                     )}
                   </div>
                   
