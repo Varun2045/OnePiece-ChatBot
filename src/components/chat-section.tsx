@@ -165,6 +165,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
             {/* Search Button */}
             <button 
               onClick={() => setShowSearch(!showSearch)}
+              title="Search (Ctrl+F)"
               style={{
                 background: showSearch ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.05)",
                 border: showSearch ? "1px solid rgba(59,130,246,0.4)" : "1px solid rgba(255,255,255,0.15)",
@@ -172,8 +173,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
                 borderRadius: "6px", fontSize: "11px", cursor: "pointer",
                 transition: "all 0.2s ease",
                 backdropFilter: "blur(10px)",
-                display: "flex", alignItems: "center", gap: "4px",
-                title: "Search (Ctrl+F)"
+                display: "flex", alignItems: "center", gap: "4px"
               }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
