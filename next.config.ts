@@ -26,10 +26,16 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['react-markdown'],
+    webpackBuildWorker: true,
   },
   
   // Turbopack configuration
   turbopack: {},
+  
+  // Generate build ID for cache busting
+  generateBuildId: async () => {
+    return `build-${Date.now()}`;
+  },
   
   // Security headers
   async headers() {
@@ -52,6 +58,15 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
           },
         ],
       },
