@@ -54,76 +54,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({ scrollToChat }) => {
         <h1 style={{
           fontSize: "clamp(40px, 9vw, 80px)",
           fontWeight: "900",
-          background: "linear-gradient(135deg, #f5a623 0%, #ff6b35 25%, #f5a623 50%, #ff6b35 75%, #f5a623 100%)",
-          backgroundSize: "300% 300%",
+          background: "linear-gradient(90deg, #f5a623, #ff6b35, #f5a623)",
+          backgroundSize: "200% auto",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
-          animation: "shimmer 4s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate",
-          letterSpacing: "-2px",
+          animation: "shimmer 3s linear infinite",
+          letterSpacing: "-1px",
           lineHeight: 1.1,
-          textTransform: "uppercase",
-          textShadow: "0 0 30px rgba(245,166,35,0.5)",
-          marginBottom: "8px",
         }}>Talk to Luffy</h1>
 
-        <div style={{
-          fontSize: "clamp(16px, 3vw, 20px)",
-          fontWeight: "600",
-          color: "rgba(255,255,255,0.9)",
-          maxWidth: "500px", 
-          lineHeight: 1.6,
-          textAlign: "center",
-          marginBottom: "24px",
-          padding: "16px 24px",
-          background: "rgba(255,255,255,0.05)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: "12px",
-          backdropFilter: "blur(10px)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-        }}>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "8px",
-            fontSize: "clamp(18px, 3.5vw, 22px)",
-            color: "#f5a623",
-            fontWeight: "700"
-          }}>
-            🏴‍☠️ Monkey D. Luffy
-          </span>
-          <span style={{ 
-            display: "block", 
-            fontSize: "clamp(14px, 2.5vw, 16px)",
-            color: "rgba(220,220,240,0.8)",
-            lineHeight: 1.5
-          }}>
-            Future King of the Pirates
-          </span>
-        </div>
-
         <p style={{
-          color: "rgba(200,200,220,0.85)",
-          fontSize: "clamp(14px, 2.5vw, 16px)",
-          maxWidth: "520px", 
-          lineHeight: 1.8,
-          textAlign: "center",
-          marginBottom: "32px",
-          padding: "20px 24px",
-          background: "linear-gradient(135deg, rgba(245,166,35,0.1) 0%, rgba(255,107,53,0.05) 100%)",
-          border: "1px solid rgba(245,166,35,0.2)",
-          borderRadius: "16px",
-          backdropFilter: "blur(8px)",
-          borderStyle: "dashed",
+          color: "rgba(220,220,240,0.85)",
+          fontSize: "clamp(14px, 2.5vw, 18px)",
+          maxWidth: "480px", lineHeight: 1.7,
+          textShadow: "0 2px 10px rgba(0,0,0,0.8)",
         }}>
-          <span style={{ 
-            display: "block", 
-            marginBottom: "12px",
-            fontSize: "18px",
-            fontWeight: "600"
-          }}>
-            ⚓ **Ask Me Anything!**
-          </span>
-          Chat with the future King of the Pirates about his adventures, crew, Devil Fruit powers, and dreams of finding the legendary **One Piece**!
+          Chat with Monkey D. Luffy — future King of the Pirates. Ask him anything about Grand Line, his crew, or his dream!
         </p>
 
         <button className="scroll-btn" onClick={scrollToChat} style={{
