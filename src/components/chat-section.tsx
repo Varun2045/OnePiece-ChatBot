@@ -67,7 +67,7 @@ const ChatSection: React.FC<ChatSectionProps> = ({
     // Split content into paragraphs
     const paragraphs = cleanContent.split('\n').filter(p => p.trim());
     
-    // Keywords to highlight
+    // Keywords to highlight - more comprehensive
     const highlightKeywords = [
       'MEAT', 'ADVENTURE', 'NAKAMA', 'ONE PIECE', 'KING OF THE PIRATES',
       'STRONGEST', 'CREW', 'DREAM', 'GRAND LINE', 'DEVIL FRUIT',
@@ -76,11 +76,20 @@ const ChatSection: React.FC<ChatSectionProps> = ({
       'YOSH', 'GOMU GOMU NO', 'SUPER', 'SUNNY', 'Ore wa', 'kaizoku ou',
       'otoko da', 'nakama', 'warrior of the sea', 'fish-man karate',
       'first mate', 'navigator', 'sniper', 'cook', 'doctor', 'archaeologist',
-      'shipwright', 'musician', 'helmsman'
+      'shipwright', 'musician', 'helmsman', 'Luffy', 'Monkey', 'D', 'Luffy'
     ];
 
     return paragraphs.map((paragraph, index) => {
       let formattedText = paragraph;
+      
+      // Always highlight Luffy's name aggressively
+      formattedText = formattedText.replace(/Luffy/gi, 
+        '<span style="color: #ff6b35; font-weight: 700; text-shadow: 0 0 10px rgba(255,107,53,0.4);">Luffy</span>'
+      );
+      
+      formattedText = formattedText.replace(/Monkey D\. Luffy/gi, 
+        '<span style="color: #ff6b35; font-weight: 700; font-style: italic; text-shadow: 0 0 10px rgba(255,107,53,0.4);">Monkey D. Luffy</span>'
+      );
       
       // Highlight important keywords
       highlightKeywords.forEach(keyword => {
